@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  integritas-mysql:
+    container_name: integritas-mysql
+    networks:
+      - integritas
+    image: mysql
+    ports:
+      - "3308:3308"
+    environment:
+      - MYSQL_ROOT_PASSWORD=020282
+      - MYSQL_DATABASE=integritas
+  integritas-activemq:
+    container_name: integritas-activemq
+    networks:
+      - integritas  
+    image: webcenter/activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    environment:
+      - MYSQL_ROOT_PASSWORD=020282
+      - MYSQL_DATABASE=integritas
+  integritas-cart:
+    container_name: integritas-cart
+    networks:
+      - integritas    
+    image: cloud.canister.io:5000/andreix/integritas-cart:1.2
+    ports:
+      - "8282:8282"
+    depends_on:
+      - integritas-mysql
+      - integritas-activemq
+    links:
+      - integritas-mysql:integritas-mysql
+      - integritas-activemq:integritas-activemq
+  integritas-pay:
+    container_name: integritas-pay
+    networks:
+      - integritas    
+    image: cloud.canister.io:5000/andreix/integritas-pay:1.2
+    ports:
+      - "8484:8484"
+    depends_on:
+      - integritas-mysql
+      - integritas-activemq
+    links:
+      - integritas-mysql:integritas-mysql
+      - integritas-activemq:integritas-activemq
+  integritas-store:
+    container_name: integritas-store
+    networks:
+      - integritas    
+    image: cloud.canister.io:5000/andreix/integritas-store:1.2
+    ports:
+      - "8686:80"
+    depends_on:
+      - integritas-cart
+      - integritas-pay
+    links:
+      - integritas-cart:integritas-cart                     
+networks:
+    integritas:
+      driver: bridge

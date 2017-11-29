@@ -5,8 +5,7 @@ https://github.com/andreixmartins/i-pay
 
 https://github.com/andreixmartins/i-cart
 
-#SWAGGER
-http://localhost:8282/swagger-ui.html
+- URL SWAGGER: http://localhost:8282/swagger-ui.html
 
 # Frontend
 https://github.com/andreixmartins/i-store

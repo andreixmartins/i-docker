@@ -1,6 +1,6 @@
 # Store Application
-The application needs of the follow ports <b>8484,8282,8686,61616(ActiveMQ) and 3306(MySQL)</b>.
-The docker images will be download from cloud.canister.io
+The application needs the following ports <b>8484,8282,8686,61616(ActiveMQ) and 3306(MySQL)</b>.
+The docker will download the images from cloud.canister.io.
 To start the application just execute the command; 
     
     - docker-compose -f ./integritas-docker-compose.yml up

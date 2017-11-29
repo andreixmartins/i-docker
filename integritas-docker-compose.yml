@@ -52,7 +52,7 @@ services:
     container_name: integritas-store
     networks:
       - integritas    
-    image: cloud.canister.io:5000/andreix/integritas-store:3.2   
+    image: cloud.canister.io:5000/andreix/integritas-store:3.4
     ports:
       - "8686:80"
     depends_on:

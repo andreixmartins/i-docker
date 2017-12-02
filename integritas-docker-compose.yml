@@ -27,7 +27,7 @@ services:
     container_name: integritas-cart
     networks:
       - integritas    
-    image: cloud.canister.io:5000/andreix/integritas-cart:5.0
+    image: axsoftware/i-cart:1.0
     ports:
       - "8282:8282"
     depends_on:
@@ -40,7 +40,7 @@ services:
     container_name: integritas-pay
     networks:
       - integritas    
-    image: cloud.canister.io:5000/andreix/integritas-pay:5.0
+    image: axsoftware/i-pay:1.0
     ports:
       - "8484:8484"
     depends_on:
@@ -53,7 +53,7 @@ services:
     container_name: integritas-store
     networks:
       - integritas    
-    image: cloud.canister.io:5000/andreix/integritas-store:5.0
+    image: axsoftware/i-store:1.0
     ports:
       - "8686:80"
     depends_on:
